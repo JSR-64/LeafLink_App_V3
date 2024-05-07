@@ -1,12 +1,7 @@
 package com.example.leaflinkappv3
 
-import android.Manifest
-import android.content.ContentValues
 import android.content.Context
-import android.content.pm.PackageManager
 import android.os.Bundle
-import android.os.Environment
-import android.provider.MediaStore
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.Button
@@ -16,8 +11,6 @@ import android.widget.Toast
 import androidx.annotation.OptIn
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.ExperimentalGetImage
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -98,11 +91,7 @@ class LocalDatabaseActivity : AppCompatActivity() {
             popupWindow.showAtLocation(parentView, Gravity.TOP, 0, 0)
         }
 
-        // Check if the permission is already granted testing
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            // If not, request the permission
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 0)
-        }
+
 
         val uploadButton = findViewById<Button>(R.id.UploadLocalDatabaseButton)
         uploadButton.setOnClickListener {
@@ -116,21 +105,6 @@ class LocalDatabaseActivity : AppCompatActivity() {
                 val gson = Gson()
                 val sensorScansJson = gson.toJson(sensorScans)
 
-                // Save the JSON data to a file for testing
-                val resolver = applicationContext.contentResolver
-                val contentValues = ContentValues().apply {
-                    put(MediaStore.MediaColumns.DISPLAY_NAME, "sensorScans.json")
-                    put(MediaStore.MediaColumns.MIME_TYPE, "application/json")
-                    put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS)
-                }
-
-                val uri = resolver.insert(MediaStore.Files.getContentUri("external"), contentValues)
-
-                uri?.let {
-                    resolver.openOutputStream(it)?.use { outputStream ->
-                        outputStream.write(sensorScansJson.toByteArray())
-                    }
-                }
 
                 // Log the data that will be sent
                 //Log.d("UploadData", "Data to be sent: $sensorScansJson")
