@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/menu/dropdown_menu.xml -->
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/scanPage"
+        android:title="@string/scanButtonText" />
+    <item
+        android:id="@+id/localDatabasePage"
+        android:title="@string/localDatabaseTitle" />
+    <item
+        android:id="@+id/page3"
+        android:title="@string/mapTitle" />
+</menu>

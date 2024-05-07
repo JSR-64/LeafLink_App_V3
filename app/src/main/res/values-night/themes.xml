@@ -1,0 +1,6 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.LeafLinkAppV3" parent="Theme.AppCompat.NoActionBar">
+
+    </style>
+</resources>

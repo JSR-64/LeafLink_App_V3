@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="leaflink_light">#3b7d23</color>
+    <color name="leaflink_dark">#0d3512</color>
+    <color name="red">#EA2424</color>
+    <color name="blank">#00FFFFFF</color>
+</resources>

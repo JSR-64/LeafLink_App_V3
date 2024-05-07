@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">LeafLink App V3</string>
+    <string name="scanButtonText">SCAN</string>
+    <string name="localDatabaseTitle">LOCAL DATABASE</string>
+    <string name="mapTitle">MAP</string>
+    <string name="localDatabaseDeleteButton">DELETE SCANS</string>
+    <string name="localDatabaseUploadButton">UPLOAD SCANS</string>
+
+</resources>
