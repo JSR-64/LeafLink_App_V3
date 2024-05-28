@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity() {
             // Create the PopupWindow
             val width = LinearLayout.LayoutParams.MATCH_PARENT
             val height = LinearLayout.LayoutParams.WRAP_CONTENT
-            val focusable = true // lets taps outside the popup also dismiss it
+            val focusable = true // lets taps outside the popup dismiss it
             val popupWindow = PopupWindow(popupView, width, height, focusable)
 
             // Create the data for the RecyclerView
@@ -154,7 +154,6 @@ class MainActivity : AppCompatActivity() {
                 )
                 val centerPoint = factory.createPoint(0.1f, 0.1f)
                 val action = FocusMeteringAction.Builder(centerPoint, FocusMeteringAction.FLAG_AF)
-                    //.disableAutoCancel() // Prevents the focus from resetting after 3 seconds
                     .build()
 
                 camera.cameraControl.startFocusAndMetering(action)
@@ -230,7 +229,6 @@ class MainActivity : AppCompatActivity() {
                                 lifecycleScope.launch(Dispatchers.IO) {
                                     sensorScanDao.insert(scanEntry)
                                 }
-                                //Toast.makeText(this, "QR Code: ${barcode.rawValue}", Toast.LENGTH_LONG).show()
                             }
                         }
                         isImageAnalyzed = true
@@ -290,12 +288,10 @@ class MainActivity : AppCompatActivity() {
                 latitude = location.latitude
                 longitude = location.longitude
                 Log.d("MainActivity", "Location received: $location")
-                //Toast.makeText(applicationContext, coordinates, Toast.LENGTH_LONG).show()
             } else {
                 latitude = 1.0000
                 longitude = 1.0000
                 Log.d("MainActivity", "Location received is null")
-                //Toast.makeText(applicationContext, "Location not available", Toast.LENGTH_LONG).show()
             }
         }
 
@@ -345,9 +341,9 @@ class MainActivity : AppCompatActivity() {
         scaleUpX.duration = 500 // duration of the animation in milliseconds
         scaleUpY.duration = 500 // duration of the animation in milliseconds
 
-        // Start the fade-in, rotation and scale animations
+        // Start the fade-in, scale animations
         fadeIn.start()
-        //rotateIn.start()
+        //scaleUp.start()
         scaleUpX.start()
         scaleUpY.start()
         // Use a Handler to delay the start of the fade-out animation

@@ -105,10 +105,6 @@ class LocalDatabaseActivity : AppCompatActivity() {
                 val gson = Gson()
                 val sensorScansJson = gson.toJson(sensorScans)
 
-
-                // Log the data that will be sent
-                //Log.d("UploadData", "Data to be sent: $sensorScansJson")
-
                 // Create a logging interceptor
                 val loggingInterceptor = HttpLoggingInterceptor().apply {
                     level = HttpLoggingInterceptor.Level.BODY
@@ -119,7 +115,7 @@ class LocalDatabaseActivity : AppCompatActivity() {
                     .addInterceptor(loggingInterceptor)
                     .build()
 
-                // Send the JSON data to your server
+                // Send the JSON data to server
                 val retrofit = Retrofit.Builder()
                     .baseUrl("http://100.120.218.87:5432")
                     .addConverterFactory(GsonConverterFactory.create())
@@ -128,10 +124,6 @@ class LocalDatabaseActivity : AppCompatActivity() {
 
                 val api = retrofit.create(ServerApi::class.java)
                 val call = api.uploadData(sensorScansJson)
-
-                // Log the URL that the data will be sent to
-                //Log.d("UploadData", "Sending data to URL: ${call.request().url}")
-
 
                 call.enqueue(object : Callback<Void> {
                     override fun onResponse(call: Call<Void>, response: Response<Void>) {
